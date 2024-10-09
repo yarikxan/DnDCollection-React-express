@@ -1,0 +1,54 @@
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border: solid;
+    border-width: 1px 0 1px 0;
+    border-color: #404040;
+}
+
+.info div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 3rem 0 0;
+    flex-basis: 50%
+}
+
+.info div h1 {
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height; 1;
+    color: #F3F4F6;
+    padding: 2rem 0 2rem 0;
+}
+
+.info div p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #E5E7EB; 
+    padding: 0 2.5rem 0 2.5rem;
+}
+
+.info figure {
+    flex-basis: 25%
+}
+
+.info img {
+    width: 16rem;
+    height: 16rem;
+    object-fit: cover;
+    border: solid;
+    border-width: 4px;
+    border-color: #6B7280;
+    border-radius: 0.5rem;
+    transition: all 700ms;
+    transform-origin: 50% 50%;
+}
+
+.info img:hover {
+    border-color: #6D28D9;
+    width: 20rem;
+    height: 20rem;
+
+}

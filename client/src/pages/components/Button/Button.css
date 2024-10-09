@@ -1,0 +1,17 @@
+.button {
+    background-color: #a855f7;
+    color: white;
+    margin: 0 0.5rem 0 0.5rem;
+    padding: 0.25rem 0.75rem 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 300ms, box-shadow;
+    user-select: none;
+}
+
+.button:hover {
+    background-color: #9333ea
+}
+
+.button:active {
+    box-shadow: inset 0px 0px 5px black ;
+}
