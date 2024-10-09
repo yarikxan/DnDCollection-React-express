@@ -1,6 +1,6 @@
 const config = {
     database: {
-        url: 'mongodb://localhost:27017/Cards',
+        url: 'mongodb://admin:%5Bfrthbgbljhs2@38.114.102.237:27017/Cards?authSource=admin',
     },
     server: {
         PORT: 3000,

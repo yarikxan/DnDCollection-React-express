@@ -1,0 +1,35 @@
+.mainPageBanner {
+    background: linear-gradient(90deg, rgb(55,48,163) 0%, rgb(255,255,255) 50%, rgb(157, 23, 77) 100%);
+    background-position: 0 0;
+    background-size: 200vw auto;
+    height: 24rem;
+}
+
+.mainPageBanner div {
+    background: #171717;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 500ms;
+}
+.mainPageBanner div:hover {
+    background: transparent;
+}
+
+.mainPageBanner a {
+    background: linear-gradient(90deg, rgb(55,48,163) 0%, #E5E7EB 50%, rgb(157,23,77) 100%);
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 8rem;
+    line-height: 1;
+    transition: font-size 500ms linear;
+}
+.mainPageBanner a:hover {
+    font-size: 12rem;
+}
+
+
