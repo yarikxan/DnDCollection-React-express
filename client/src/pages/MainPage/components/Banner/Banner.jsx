@@ -22,7 +22,7 @@ export default function MainPageBanner(){
     return(
         <div ref={banner} style={{backgroundPosition: bgPos}} className="mainPageBanner">
             <div>
-                <a href="/play">Start</a>
+                <a href="/play">Kek</a>
             </div>
         </div>
     )
