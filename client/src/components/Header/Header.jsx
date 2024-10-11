@@ -1,7 +1,9 @@
 import './Header.css';
 import Button from '../Button/Button'
+import {useNavigate} from 'react-router-dom'
 
 export default function Header() {
+    const navigate = useNavigate();
 
     return(
         <>
@@ -16,8 +18,8 @@ export default function Header() {
                 </nav>
 
                 <div>
-                    <Button text={"Login"} />
-                    <Button text={"Register"}/>
+                    <Button onClick={() => navigate('/auth', {state: {box: "Login"}}) } >Login</Button>
+                    <Button onClick={() => navigate('/auth', {state: {box: "Register"}}) } >Register</Button>
                 </div>
             </header>
         </>
