@@ -1,0 +1,85 @@
+.RegisterBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+    width: 24rem;
+    background: #262626;
+    border-radius: 0.5rem;
+}
+
+.RegisterBox form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: inherit;
+}
+
+.RegisterBox h1 {
+    margin: 2rem 0;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #7C3AED;
+}
+
+.RegisterBox h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #DC2626;
+}
+
+.RegisterBox label {
+    color: #9CA3AF;
+}
+
+.RegisterBox input {
+    background: white;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    border: solid;
+    border-width: 2px;
+    border-color: #818CF8;
+    border-radius: 0.25rem;
+    color: black;
+}
+.RegisterBox .inputError {
+    border-color: #FC8181;
+    margin-bottom: 0;
+}
+
+.RegisterBox .pError {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: #FC8181;
+}
+
+.RegisterBox form button {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 2.5rem;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.RegisterBox p {
+    margin: 1rem auto;
+    color: #9CA3AF;
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+
+}
+
+.RegisterBox p button {
+    margin: 0;
+    padding: 0;
+    color: #8B5CF6;
+    background: none;
+}
+.RegisterBox p button:hover {
+    background: none;
+    box-shadow: none;
+}

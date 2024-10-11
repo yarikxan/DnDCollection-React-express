@@ -12,10 +12,11 @@ export default function MainPageBanner(){
 
             setBgPos(`calc(${x}px + 100vw)`);
         }
+        const bannerElement = banner.current;
 
-        banner.current.addEventListener('mousemove', handleMouseMove);
+        bannerElement.addEventListener('mousemove', handleMouseMove);
 
-        return () => {banner.current.removeEventListener('mousemove', handleMouseMove);}
+        return () => {bannerElement.removeEventListener('mousemove', handleMouseMove);}
         
     }, []);
 
