@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 
 const router = express.Router();
 
-router.post('/sendResetMail', async (req,res) => {
+router.post('/api/sendResetMail', async (req,res) => {
     try{
         const existingUser = await User.findOne({email: req.body.email});
 

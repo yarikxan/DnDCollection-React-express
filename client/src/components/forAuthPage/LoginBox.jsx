@@ -4,25 +4,48 @@ import {loginSchema} from '../schemas/login.js'
 import Input from '../Input/Input'
 import Button from '../Button/Button'
 
-const onSubmit = async (values, actions) => {
-    console.log("Submited");
-    actions.resetForm()
-}
 
-export default function LoginBox({changeBox}) {
+export default function LoginBox({goBack, changeBox}) {
+
+    const onSubmit = async (values, actions) => {
+        try {
+            const response = await fetch('/api/authUser', {
+                method: "POST",
+                headers: {"Content-type": "application/json;charset=utf-8"},
+                body: JSON.stringify(values),
+                credentials: "include",
+            });
+
+            if (response.status == 200) {
+                const data = await response.json();
+                goBack();
+            } else if (response.status == 400) {
+                const errorData = await response.json();
+                actions.setErrors({submit: "Wrong details"});
+            } else {
+                actions.setErrors({submit: "Server error!"});
+            }
+        } catch (error) {
+            actions.setErrors({submit: "An unexpected error occured."});
+        } finally {
+            actions.setSubmitting(false);
+        }
+    };
 
     return (
         <>
             <h1> Welcome back! </h1>
             <Formik
-                initialValues ={{loginInput: "", passwordInput: ""}}
+                initialValues ={{login: "", password: ""}}
                 validationSchema={loginSchema}
                 onSubmit={onSubmit}
             >
                 {(props) => (
                     <Form>
-                        <Input label="Login" id="loginInput" name="loginInput" type="text" />
-                        <Input label="Password" id="passwordInput" name="passwordInput" type="password"/>
+                        {props.errors.submit && <h2>{props.errors.submit}</h2>}
+                        
+                        <Input label="Login" id="loginInput" name="login" type="text" />
+                        <Input label="Password" id="passwordInput" name="password" type="password"/>
 
                         <Button disabled={props.isSubmitting} type={"submit"}>Login</Button>
                     </Form>

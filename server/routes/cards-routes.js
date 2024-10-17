@@ -6,8 +6,8 @@ const handleError = (res, error) => {
     res.status(500).json({error});
 };
 
-router.get('/getCards', cardController.getCards);
+router.get('/api/getCards', cardController.getCards);
 
-router.get('/countCards', cardController.countCards);
+router.get('/api/countCards', cardController.countCards);
 
 module.exports = router;
