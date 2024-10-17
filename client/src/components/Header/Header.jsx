@@ -1,9 +1,19 @@
-import './Header.css';
-import Button from '../Button/Button'
-import {useNavigate} from 'react-router-dom'
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
-export default function Header() {
-    const navigate = useNavigate();
+import './Header.css';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+
+export default function Header({user, logOut, nav}) {
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => { setModalOpen(true)}
+
+    const logOutAndCloseModal = () => {
+        logOut();
+        setModalOpen(false);
+    }
 
     return(
         <>
@@ -17,10 +27,25 @@ export default function Header() {
                     </ul>
                 </nav>
 
-                <div>
-                    <Button onClick={() => navigate('/auth', {state: {box: "Login"}}) } >Login</Button>
-                    <Button onClick={() => navigate('/auth', {state: {box: "Register"}}) } >Register</Button>
-                </div>
+                <Modal close={() => setModalOpen(false)} open={isModalOpen} className={"headerModal"}>
+                    <div>
+                        <p> {user.userData.username} </p>
+                        <Link>dsafdsafdsa</Link>
+                        <Link>safdsafdsfas</Link>
+                        <Button onClick={logOutAndCloseModal}>Log out </Button>
+                    </div>
+                </Modal>
+
+
+                {user.isAuth === null? null : user.isAuth ? <Button className={"userButton"} onClick = {() => setModalOpen(true)}>{user.userData.username || "User"}</Button> :
+                                                            <div>
+                                                                <Button onClick={() => nav('/auth', "Login") } >Login</Button>
+                                                                <Button onClick={() => nav('/auth', "Register") } >Register</Button>
+                                                            </div> 
+                    
+                }
+                
+
             </header>
         </>
     )

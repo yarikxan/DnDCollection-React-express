@@ -29,7 +29,7 @@ const userController = {
             let correctPassword = await bcrypt.compare(password, existingUser.password);
 
             if(!existingUser || !correctPassword) {
-                res.status(404).json({data: 'wrong details'});
+                return res.status(400).json({data: 'wrong details'});
             }
     
             let token;
@@ -38,6 +38,7 @@ const userController = {
                     {
                         userId: existingUser.id,
                         email: existingUser.email,
+                        username: existingUser.name,
                     },
                     config.secret,
                     {expiresIn: "72h"}
@@ -52,7 +53,7 @@ const userController = {
                 maxAge: 7*24*60*60*1000,
                 sameSite: 'Lax',
                 path: '/',
-                httpOnly: true,
+                //httpOnly: true,
             });
     
             res.status(200).json({
@@ -77,8 +78,9 @@ const userController = {
             login: req.body.login,
             email: req.body.email,
             password: hash,
-            name: req.body.name
+            name: req.body.username
         });
+        console.log(newUser);
     
         let existingUser;
         try{
@@ -102,7 +104,7 @@ const userController = {
                 {
                 userId: newUser.id,
                 email: newUser.email,
-                login: newUser.login,
+                username: newUser.name,
                 },
                 config.secret,
                 {expiresIn: '72h'}
@@ -116,7 +118,7 @@ const userController = {
             maxAge: 7*24*60*60*1000,
             sameSite: 'Lax',
             path: '/',
-            httpOnly: true,
+            //httpOnly: true,
         });
 
         res.status(201).json({
@@ -159,7 +161,7 @@ const userController = {
     },
     changeUserPassword: async (req,res) => {
         const email = req.body.email;
-        const resetCode = req.body.resetCode;
+        const resetCode = req.body.code;
 
         let newPassword;
         let existingUser;
@@ -176,13 +178,36 @@ const userController = {
         }
 
         if(!correctCode) {
-            res.status(400).json({error: 'Invalid Code'});
-            return;
+            return res.status(400).json({error: 'Invalid Code'});
+            
         }
 
         existingUser.password = newPassword;
         existingUser.resetCode = "";
         existingUser.save();
+        
+        let token;
+        try {
+            token = jwt.sign(
+                {
+                userId: existingUser.id,
+                email: existingUser.email,
+                username: existingUser.name,
+                },
+                config.secret,
+                {expiresIn: '72h'}
+            );
+        } catch (err) {
+            const error = new Error('Failed to make new token');
+            return next(err);
+        };
+   
+        res.cookie('authorization', token, {
+            maxAge: 7*24*60*60*1000,
+            sameSite: 'Lax',
+            path: '/',
+            //httpOnly: true,
+        });
         
         res.status(200).json({data: 'Password changed succesfully'});
     },
