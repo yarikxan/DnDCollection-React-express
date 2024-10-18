@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
 
-import './Header.css';
+import classes from './Header.module.css';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 
@@ -17,7 +17,7 @@ export default function Header({user, logOut, nav}) {
 
     return(
         <>
-            <header className="mainHeader">
+            <header className={classes.mainHeader}>
                 <h1>gmprikol</h1>
                 <nav>
                     <ul>
@@ -27,7 +27,7 @@ export default function Header({user, logOut, nav}) {
                     </ul>
                 </nav>
 
-                <Modal close={() => setModalOpen(false)} open={isModalOpen} className={"headerModal"}>
+                <Modal close={() => setModalOpen(false)} open={isModalOpen} className={classes.headerModal}>
                     <div>
                         <p> {user.userData.username} </p>
                         <Link>dsafdsafdsa</Link>
@@ -37,7 +37,7 @@ export default function Header({user, logOut, nav}) {
                 </Modal>
 
 
-                {user.isAuth === null? null : user.isAuth ? <Button className={"userButton"} onClick = {() => setModalOpen(true)}>{user.userData.username || "User"}</Button> :
+                {user.isAuth === null? null : user.isAuth ? <Button className={classes.userButton} onClick = {() => setModalOpen(true)}>{user.userData.username || "User"}</Button> :
                                                             <div>
                                                                 <Button onClick={() => nav('/auth', "Login") } >Login</Button>
                                                                 <Button onClick={() => nav('/auth', "Register") } >Register</Button>
