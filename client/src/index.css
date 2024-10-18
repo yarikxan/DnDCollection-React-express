@@ -15,3 +15,11 @@ a, a:link, a:visited, a:hover {text-decoration: none;}
     
 }
 
+.wrapper {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+    height: auto;
+    background-color: #262626;
+}
+

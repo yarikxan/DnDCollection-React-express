@@ -1,0 +1,26 @@
+.notFoundPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #262626;
+}
+
+.infoBlock {
+    margin: 0 2rem;
+}
+
+
+.infoBlock h1 {
+    color: red;
+    font-size: 8rem;
+    line-height: 1;
+}
+
+.infoBlock p {
+    color: #f87171;
+}
+
+
+
+

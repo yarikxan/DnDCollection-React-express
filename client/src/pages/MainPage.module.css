@@ -1,6 +1,8 @@
 .wrapper {
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    height: minmax(100vh, auto);
+    min-height: 100vh;
+    height: auto;
     background-color: #262626;
+
 }
