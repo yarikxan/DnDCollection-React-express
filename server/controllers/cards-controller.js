@@ -74,9 +74,25 @@ const cardController = {
     },
 
     getCard: async (req,res) => {
-        
-    
+    	try {
+    		const existingCard = await Card.findById(req.query.id);
+    		return res.status(200).json({card: existingCard});
+    	} catch (err) {
+    		return res.status(500).json({error: err, query: req.query.id});
+    	}
+
     },
+    
+    createCard: async (req,res) => {
+    	const newCard = new Card({});
+    	try{
+    		const savedNewCard = await newCard.save();
+	        return res.status(200).json({card: savedNewCard});
+    	} catch (err) {
+    		console.log(err)
+    		return res.status(500).json({error: err});
+    	}
+    }
 
 }
 

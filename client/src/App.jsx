@@ -7,7 +7,7 @@ import MainPage from './pages/MainPage';
 import AuthPage from './pages/AuthPage';
 import CollectionPage from './pages/CollectionPage';
 import NotFoundPage from './pages/NotFoundPage';
-
+import WorkshopPage from './pages/WorkshopPage';
 
 function App() {
     const [user, setUser] = useState({ isAuth: null , userData: {}});
@@ -29,13 +29,15 @@ function App() {
                         isAuth: true,
                         userData : data,
                     }));
-                } else {
+                } else if (response.status == 401) {
                     const error = await response.json();
                     setUser((prev) => ({
                         ...prev,
                         isAuth: false,
                     }))
                     console.log(error.error);
+                } else {
+                    
                 }
   
             } catch (err) {
@@ -62,6 +64,7 @@ function App() {
         <Route path="/" element={<MainPage user={user} logOut={logOut} />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/collection" element={<CollectionPage user={user} logOut={logOut} />} />
+        <Route path="/workshop/:id" element={<WorkshopPage user={user} logOut={logOut} />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>

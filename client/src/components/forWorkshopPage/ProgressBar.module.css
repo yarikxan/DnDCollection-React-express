@@ -1,0 +1,31 @@
+
+.progressBar{
+    display: flex;
+    border-radius: 2rem;
+}
+
+.progressBar p {
+    padding: 0 0.2rem;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.barName{
+    flex-basis: 30%;
+    border-radius: 2rem 0 0 2rem;
+}
+
+.barProgress{
+    display: block;
+    height: 100%;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.barValue{
+    position: absolute;
+    z-index: 1;
+    flex-basis: 70%;
+    text-align: end;
+}

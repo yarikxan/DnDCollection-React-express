@@ -1,0 +1,110 @@
+.tab {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem;    
+    height: 100%;
+}
+
+.tab .weaponHeader{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px  solid #6366f166;
+}
+
+.weaponHeader p {
+    flex-basis: 25%;
+    color: white;
+    text-align: center;
+}
+
+.tab .weaponContainer{
+    overflow-y: auto;
+    flex-basis: 33.33%;
+    border-bottom: 1px solid #6366f166;
+}
+
+.weapon {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.weapon button {
+    flex-basis: 25%;
+    min-width: 3rem;
+    color: white;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.textarea{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.textarea h1 {
+    color: white;
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+.textarea textarea {
+    flex-grow: 1;
+    color: white;
+    border: 2px solid #6b21a8;
+    border-radius: 1rem;
+}
+
+.tab .spellHeader{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #6366f166;
+}
+
+.spellHeader p {
+    flex-basis: 33.33%;
+    color: #6B7280;
+    text-align: center;
+}
+
+.tab .spellStats {
+    display: flex;
+    align-items: center;
+}
+
+.spellStats p {
+    flex-basis: 33.33%;
+    color: white;
+    text-align: center;
+}
+
+.tab .spell {
+    display: flex;
+    align-items: center;
+    background-color: #7f11e033;
+    border-radius: 100rem;
+    padding: 0 0.25rem;
+    margin: 0.3rem 0;
+}
+
+.spell > p {
+    flex-basis: 33.33%;
+    color: white;
+    text-align: start;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+.spell div  {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+.spell div p {
+    flex-basis: 25%;
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}

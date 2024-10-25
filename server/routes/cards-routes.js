@@ -10,4 +10,8 @@ router.get('/api/getCards', cardController.getCards);
 
 router.get('/api/countCards', cardController.countCards);
 
+router.get('/api/createCard', cardController.createCard);
+
+router.get('/api/getCard', cardController.getCard);
+
 module.exports = router;
