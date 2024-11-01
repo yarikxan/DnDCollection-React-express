@@ -18,7 +18,7 @@ import RightTabModal from './RightTabModal';
 export default function Main({card, setCard}) {
 
     const [infoModal, setInfoModal] = useState(false);
-    const expForLevels = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 50000];
+    const expForLevels = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000, 50000];//Массив с значениями, необходимыми для достижения i-го уровня
     
     const [bonusModal, setBonusModal] = useState(false);
     const [rightTabModal, setRightTabModal] = useState(false);

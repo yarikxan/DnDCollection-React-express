@@ -10,7 +10,7 @@ const Textarea = ({label, value, id, handleBlur, style}) => (
 
 
 export default function LeftTab({tab, card, setCard}) {
-    
+    //Изменение данных карточки на клиенте, без обращения к серверу
     const handleBlur = (event) => {
         setCard((prev) => ({
             ...prev,

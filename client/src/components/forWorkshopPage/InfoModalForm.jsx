@@ -9,15 +9,16 @@ const Input = ({label, id, type, onBlur, defaultValue}) => (
         <label style={{margin: "0 1rem"}} htmlFor={id}>{label}</label>
     </div>
 );
-
+//epxforLevels - массив со значениями опыта, необходимого для достижения i-го уровня
 export default function InfoModalForm({card, setCard, expForLevels}) {
     const [expValue, setExpValue] = useState("");
 
-
+    //Изменение данных карточки на стороне клиента без отправки новых данных на сервер
     const handleBlur = (event) => {
         setCard((prev) => ({...prev, [event.target.id]: event.target.value }));
     };
 
+    //Изменения картинки "профиля" карточки. Здесь идет обращение к серверу, так как это наиболее удобное место для имзенения картинки
     const handlePicChange = async (event) => {
         const formData = new FormData();
         formData.append('file', event.target.files[0]);
@@ -41,12 +42,14 @@ export default function InfoModalForm({card, setCard, expForLevels}) {
             console.log("File upload error", err);
         }
     };
-
+    
+    //Манипуляция данными об опыте персонажа на карточке
     const handleSubmit = (event, action) => {
         const newExp = parseInt(expValue);
         if (expValue == "" || isNaN(newExp)){ return }
 
         if(action == "add") {
+            //Обработка крайних значний уровня персонажа еще будет дорабатываться
             if(card.level == "20") {return }
             if(newExp + card.exp >= expForLevels[card.level]){
                 if(card.level == "19"){
@@ -54,7 +57,7 @@ export default function InfoModalForm({card, setCard, expForLevels}) {
                 } else {
                     setCard((prev) => ({
                         ...prev,
-                        level: expForLevels.findIndex(exp => exp > (newExp + card.exp)),
+                        level: expForLevels.findIndex(exp => exp > (newExp + card.exp)),//Здесь происходит поиск нужного уровня после повышения в заранне созданном массиве с уровнями и опытом, необходимым для их достижения. Индекс = уровень, который досигается.
                     }));
                 }
             }
@@ -73,7 +76,7 @@ export default function InfoModalForm({card, setCard, expForLevels}) {
                 setCard((prev) => ({
                     ...prev,
                     exp : card.exp - newExp,
-                    level: expForLevels.findIndex(exp => exp > (card.exp - newExp)),
+                    level: expForLevels.findIndex(exp => exp > (card.exp - newExp)),//Тот же принцип, что и ранее, но для понижения
                 }));
             } else {
                 setCard((prev) => ({

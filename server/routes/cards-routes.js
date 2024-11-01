@@ -6,10 +6,11 @@ const cardController = require('../controllers/cards-controller')
 const router = express.Router();
 
 const imgStorage = multer.diskStorage({
-	destination: (req,res,cb) => { cb(null, '/home/yarikxan/Desktop/jest/react/client/public/img')},
+//Здесь полный путь для облегчения работы во время этапа разработки, позже, после сборки заменить на относительные
+	destination: (req,res,cb) => { cb(null, '/home/yarikxan/Desktop/jest/react/client/public/img')}, 
 	filename: (req,file,cb) => {
 			    const fileName = req.query.cardId;
-			    cb(null, fileName + path.extname(file.originalname));
+			    cb(null, fileName + path.extname(file.originalname)); //Сохраняем путь с расширением файла
 		    }
 });
 const uploadImg = multer({storage: imgStorage});

@@ -12,7 +12,8 @@ import WorkshopPage from './pages/WorkshopPage';
 function App() {
     const [user, setUser] = useState({ isAuth: null , userData: {}});
     const [cookies, setCookie, removeCookie] = useCookies(['authorization']);
-
+	
+    //Авторизация проводится единожды при открытии приложения	
     useEffect(() => {
         const authTokenValidator = async (token) => {
             try {

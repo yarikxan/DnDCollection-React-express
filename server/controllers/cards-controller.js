@@ -96,7 +96,7 @@ const cardController = {
     },
     
     uploadImg: async (req, res) => {
-    	const filePath = req.file.path.match(/\/img\/\w+\.\w+/)[0];
+    	const filePath = req.file.path.match(/\/img\/\w+\.\w+/)[0]; //От полного пути отрезается только часть, нужная для vite, чтобы найти нужный файл
     	const cardId = req.query.cardId;
     	
     	try {
