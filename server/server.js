@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
+
 const config = require('./config');
 const cardsRoutes = require('./routes/cards-routes');
 const userRoutes = require('./routes/users-routes');
@@ -27,6 +28,7 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 //routes
 app.use(cardsRoutes);
@@ -34,6 +36,13 @@ app.use(userRoutes);
 
 //mailer
 app.use(mailer);
+
+
+mongoose
+ .connect(URL)
+ .then(() => console.log('Connected to MongoDB'))
+ .catch((err) => console.log(`Connection failed: ${err}`));
+
 
 app.get('/api/verifyToken', (req,res) => {
 	const token = req.cookies.authorization || req.headers['authorization'];
@@ -46,14 +55,7 @@ app.get('/api/verifyToken', (req,res) => {
 		
 		res.status(200).json(decoded);
 	});
-})
-
-
-mongoose
- .connect(URL)
- .then(() => console.log('Connected to MongoDB'))
- .catch((err) => console.log(`Connection failed: ${err}`));
-
+});
 
 app.listen(PORT, (err) => {
     err ? console.log(err) : console.log(`server listenin on ${PORT} port`);

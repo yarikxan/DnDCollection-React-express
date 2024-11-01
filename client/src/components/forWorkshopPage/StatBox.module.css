@@ -31,6 +31,22 @@
     justify-content: space-around;
 }
 
+.modifiers .checkbox{
+    display: flex;                                                                                                                                                                                         
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    border-radius: 9999px;
+    border: 2px solid #5B21B6;
+}
+
+.checkbox span {
+    height: 5px;
+    width: 5px;
+    border-radius: 9999px;
+}
+
 .modifiers .throw {
     color: white;
     font-size: 1.25rem;

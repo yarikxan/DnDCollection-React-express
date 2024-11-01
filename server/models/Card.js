@@ -8,12 +8,13 @@ const Schema = mongoose.Schema;
 
 const skillSchema = new Schema({
 	name: String,
-	value: Boolean,
+	value: Number,
 }, {_id: false});
 
 const statSchema = new Schema({
 	name: String,
 	value: Number,
+	save: Boolean,
 	skills: [skillSchema],
 }, {_id: false});
 
@@ -70,7 +71,7 @@ const cardSchema = new Schema({
     	type: Number,
     	default: 0,
     },
-    Inspiration:{ 
+    inspiration:{ 
     	type: Number,
     	default: 0,
     },
@@ -104,21 +105,21 @@ const cardSchema = new Schema({
     stats:{ 
     	type:[statSchema],
     	default: [
-    		{name: "Constitution", value: 0, 
+    		{name: "Constitution", value: 10, save: false, 
     			skills: []},
-    		{name: "Strenght",value: 0,
-    			skills: [{name: "Athletics", value: false}]},
-    		{name: "Agility", value: 0,
-    			skills: [{name: "Acrobatics", value: false}, {name: "Selight of hands", value: false}, {name: "Stealth", value: false}]},
-    		{name: "Intelligence", value: 0,
-    			skills: [{name: "Arcana", value: false}, {name: "Nature", value: false}, {name: "History", value: false},
-    					 {name: "Religion", value: false}, {name: "Investigation", value: false}]},
-    		{name: "Wisdom", value: 0,
-    			skills: [{name: "Medicine", value: false}, {name: "Insight", value: false}, {name: "Perception", value: false},
-    					 {name: "Survival", value: false}, {name: "Animal Handling", value: false}]},
-    		{name: "Charisma", value: 0,
-    			skills: [{name: "Deception", value: false}, {name: "Perfomance", value: false}, {name: "Intimidation", value: false},
-    					 {name: "Persuasion", value: false}]},
+    		{name: "Strenght",value: 10, save: false,
+    			skills: [{name: "Athletics", value: 0}]},
+    		{name: "Agility", value: 10, save: false,
+    			skills: [{name: "Acrobatics", value: 0}, {name: "Selight of hands", value: 0}, {name: "Stealth", value: 0}]},
+    		{name: "Intelligence", value: 10, save: false,
+    			skills: [{name: "Arcana", value: 0}, {name: "Nature", value: 0}, {name: "History", value: 0},
+    					 {name: "Religion", value: 0}, {name: "Investigation", value: 0}]},
+    		{name: "Wisdom", value: 10, save: false,
+    			skills: [{name: "Medicine", value: 0}, {name: "Insight", value: 0}, {name: "Perception", value: 0},
+    					 {name: "Survival", value: 0}, {name: "Animal Handling", value: 0}]},
+    		{name: "Charisma", value: 10, save: false,
+    			skills: [{name: "Deception", value: 0}, {name: "Perfomance", value: 0}, {name: "Intimidation", value: 0},
+    					 {name: "Persuasion", value: 0}]},
     	]
     },
 

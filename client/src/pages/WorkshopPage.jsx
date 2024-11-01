@@ -12,6 +12,16 @@ export default function WorkshopPage({user, logOut}){
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    const updateCardOnServer = async () => {
+        try{
+            const response = await fetch('/api/updateCard', {
+                method: "POST",
+                headers: "application/json;charset=utf-8",
+                body: JSON.stringify(card)
+            });
+        } catch(err) {}
+    };
+
     useEffect(() => {
         const getCard = async () => {
             //Trying to find a card from params.id
@@ -35,7 +45,7 @@ export default function WorkshopPage({user, logOut}){
                         }
                     } catch (error) {
                         console.log(error);
-                        navigate('ServerErrorPage');                        
+                        navigate('/ServerErrorPage');                        
                     }
                 }
             }  catch (error) {
@@ -44,7 +54,7 @@ export default function WorkshopPage({user, logOut}){
             }
         }
         getCard();
-
+        console.log(card);
     }, []);
 
 

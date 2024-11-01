@@ -60,16 +60,17 @@ const cardController = {
         };
     },
 
-    changeCard: async (req,res) => {
-        const cardId = req.query.cardId;
-
-        const currCard = await Card.findById(cardId);
-        const changedCard = req.body.card;
-
-
-        if(!cardId) {
-            res.status(400).json({error: "Wrong id"});
-            return
+    updateCard: async (req,res) => {
+        const cardToSave = req.body.card;
+        
+        try {
+        	const result = await Card.findByIdAndUpdate(cardToSave._id, cardToSave, {new: true});
+        	
+        	if (!result){
+        		return res.status(404).json({error: "Card not found"});
+        	}
+        } catch (err) {
+        	return res.status(500).json({error: err});
         }
     },
 
@@ -92,7 +93,25 @@ const cardController = {
     		console.log(err)
     		return res.status(500).json({error: err});
     	}
-    }
+    },
+    
+    uploadImg: async (req, res) => {
+    	const filePath = req.file.path.match(/\/img\/\w+\.\w+/)[0];
+    	const cardId = req.query.cardId;
+    	
+    	try {
+    	    const result = await Card.findByIdAndUpdate(cardId, {imgIdURL: filePath}, {new: true});
+    	    
+    	    return res.status(200).json({imgIdURL: filePath});
+    	    if(!result) {
+    	        return res.status(404).json({error: "Card not found"});
+    	    }
+    	    
+    	} catch (err) {
+    	    console.log(err);
+    	    return res.status(500).json({error: "Failed to upload a file"});
+    	}
+    },
 
 }
 

@@ -1,7 +1,7 @@
 import classes from './PassivesBox.module.css';
 
 
-export default function PassivesBox({profinciences, modifiers}){
+export default function PassivesBox({card, setCard}){
 
     return (
         <div>
@@ -25,7 +25,7 @@ export default function PassivesBox({profinciences, modifiers}){
 
             <section className={classes.bottom}>
                 <h1>Profinciencies and languages</h1>
-                <textarea value={profinciences}></textarea>
+                <textarea></textarea>
             </section>
         </div>
     )

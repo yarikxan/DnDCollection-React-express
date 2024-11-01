@@ -6,11 +6,11 @@ export default function Input({label, className ,...props}) {
 
 
     return (
-        <>
+        <div style={{display: "flex", flexDirection: "column"}}>
             <label htmlFor={props.id}>{label}</label>
             <input {...field} {...props} className={meta.error && meta.touched? `inputError ${className}`: className}/>
             {meta.touched && meta.error && <p className="pError">{meta.error}</p>}
-        </>
+        </div>
     );
 
 } 

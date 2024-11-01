@@ -9,7 +9,7 @@
 .tab .weaponHeader{
     display: flex;
     align-items: center;
-    border-bottom: 1px  solid #6366f166;
+    border-bottom: 2px  solid #6366f166;
 }
 
 .weaponHeader p {
@@ -18,21 +18,26 @@
     text-align: center;
 }
 
+.weaponHeader button{
+    flex-basis: 25%;
+    margin: 0.25rem 0;
+}
+
 .tab .weaponContainer{
     overflow-y: auto;
-    flex-basis: 33.33%;
-    border-bottom: 1px solid #6366f166;
+    height: 165px;
+    border-bottom: 2px solid #6366f166;
 }
 
 .weapon {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    border-bottom : 1px solid #6366f166 ;
     padding: 0.5rem 0;
 }
 
 .weapon button {
     flex-basis: 25%;
-    min-width: 3rem;
     color: white;
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -40,8 +45,8 @@
 
 .textarea{
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
+    flex-direction: column;
 }
 .textarea h1 {
     color: white;
@@ -52,6 +57,7 @@
 .textarea textarea {
     flex-grow: 1;
     color: white;
+    padding: 0.5rem;
     border: 2px solid #6b21a8;
     border-radius: 1rem;
 }

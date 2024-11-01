@@ -4,17 +4,17 @@ import {createPortal} from "react-dom";
 import './Modal.css';
 import Button from '../Button/Button';
 
-export default function Modal({children, close, open, className, ...props} ) {
+export default function Modal({children, close, isOpen, className, ...props} ) {
     const dialog = useRef();
 
 
     useEffect(() => {
-        if (open) {
+        if (isOpen) {
             dialog.current.showModal();
         } else {
             dialog.current.close();
         }       
-    }, [open])
+    }, [isOpen])
 
 
     return createPortal(

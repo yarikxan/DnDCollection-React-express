@@ -1,12 +1,14 @@
 .tab{
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
     height: 100%;
     margin: 1rem;
 }
 .tab div {
+    flex-basis: 50%;
     display: flex;
-    gap: 0.25rem;
+    gap: 1rem;
 }
 
 .tab .textarea{
@@ -19,11 +21,10 @@
     text-align: center;
     color: white;
     font-size: 1.5rem;
-    line-height: 1;
 }
 
 .textarea textarea{
-    height: 6rem;
+    flex-grow: 1;
     padding: 0.25rem;
     border: 2px solid #6b21a8;
     border-radius: 1rem;

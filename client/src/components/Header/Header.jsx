@@ -27,7 +27,7 @@ export default function Header({user, logOut, nav}) {
                     </ul>
                 </nav>
 
-                <Modal close={() => setModalOpen(false)} open={isModalOpen} className={classes.headerModal}>
+                <Modal close={() => setModalOpen(false)} isOpen={isModalOpen} className={classes.headerModal}>
                     <div>
                         <p> {user.userData.username} </p>
                         <Link>dsafdsafdsa</Link>
